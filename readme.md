@@ -104,18 +104,6 @@ git commit -m "Mensagem clara do que foi alterado"
 * **Uso comum**: Confirmar mudanças no código com uma descrição.
 
 
-## ▪ Baixando um Repositório Remoto
-### `git clone <url>`
-Faz o clone de um repositório remoto para a máquina local.
-
-```bash
-git clone https://github.com/usuario/repo.git
-```
-
-* **Descrição**: Cria uma cópia local de um repositório remoto.
-* **Uso comum**: Obter uma cópia de trabalho de um repositório Git hospedado remotamente.
-
-
 ## ▪ Atualizando o Local com o Repositório Remoto
 ### `git pull origin <branch>`
 Faz o clone de um repositório remoto para a máquina local.
@@ -142,6 +130,17 @@ git push
 
 * **Descrição**:  Envia suas alterações de commits para o servidor remoto.
 * **Uso comum**:  Compartilhar seu trabalho com outros desenvolvedores e hospedar na nuvem os commits realizados localmente.
+
+
+## ▪ Enviando Alterações para o Repositório Remoto informando qual a branch associar
+### ` git push --set-upstream origin <branch-remota-associada>`
+Este comando envia as alterações dos commits da branch local atual para a branch remota especificada, além de definir uma associação entre a branch local e a remota, facilitando futuros pushes sem a necessidade de especificar a branch remota novamente.
+```bash
+ git push --set-upstream origin master
+```
+
+* **Descrição**: Envia as alterações da branch local para a branch remota e estabelece um relacionamento entre as duas, permitindo que os próximos comandos git push usem esse link automaticamente.
+* **Uso comum**: Quando você cria uma nova branch local e deseja associá-la a uma branch remota pela primeira vez, evitando a necessidade de especificar a branch remota em comandos subsequentes de push.
 
 
 ## ▪ Rebasing (Reorganizando o Histórico de Commits)
@@ -269,6 +268,16 @@ ou
 ```bash
 git merge --abort
 ```
+
+## ▪ Enviando Alterações para o Repositório Remoto informando qual a branch associar
+### `git pull origin <branch> --allow-unrelated-histories`
+Este comando faz o pull das alterações da branch remota especificada para a branch local atual, mesmo que os históricos de commits entre os dois repositórios não estejam relacionados. Isso é útil quando você está tentando combinar dois repositórios que foram inicializados separadamente ou têm históricos divergentes.
+```bash
+git pull origin main --allow-unrelated-histories
+```
+
+* **Descrição**: Permite combinar um repositório remoto com um local que possui históricos de commits diferentes, forçando a união entre eles.
+* **Uso comum**: Quando você está trabalhando com dois repositórios que foram criados separadamente e precisa unir as histórias sem a rejeição comum de "histórias não relacionadas".
 
 
 ## ▪ Ignorando Arquivos com .gitignore
